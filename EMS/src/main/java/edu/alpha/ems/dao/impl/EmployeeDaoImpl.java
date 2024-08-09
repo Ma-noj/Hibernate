@@ -40,6 +40,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 				entityTransaction.begin();
 				entityManager.merge(employee);
 				entityTransaction.commit();
+				return employee;
 			}
 			throw new EmployeeNotFoundException("Employee With the Given Id = " + employee.getEmaployeeId()
 					+ " Is Not Present So we can't Update the Employee Info");
