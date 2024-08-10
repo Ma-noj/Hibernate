@@ -63,9 +63,9 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
 	@Override
 	public boolean deleteEmployee(int employeeId) {
-		Employee employee = findEmployeeById(employeeId);
+		EntityManager entityManager = EntityManagerUtil.getEntityManager();
+		Employee employee = entityManager.find(Employee.class, employeeId);
 		if (employee != null) {
-			EntityManager entityManager = EntityManagerUtil.getEntityManager();
 			EntityTransaction entityTransaction = entityManager.getTransaction();
 			entityTransaction.begin();
 			entityManager.remove(employee);
